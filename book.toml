@@ -1,0 +1,21 @@
+[book]
+authors = ["pbzweihander"]
+language = "en"
+multilingual = false
+src = "src"
+title = "CVAOG Wiki"
+description = "Combined Virtual Air Operations Group Wiki"
+
+[preprocessor.pagetoc]
+
+[output.html]
+git-repository-url = "https://github.com/cvaog/wiki"
+edit-url-template = "https://github.com/cvaog/wiki/edit/main/{path}"
+additional-css = ["theme/pagetoc.css"]
+additional-js  = ["theme/pagetoc.js"]
+cname = "wiki.cvaog.org"
+
+[output.html.fold]
+enable = true
+level = 0
+
