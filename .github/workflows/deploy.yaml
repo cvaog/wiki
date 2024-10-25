@@ -24,6 +24,7 @@ jobs:
           echo `pwd`/mdbook >> $GITHUB_PATH
       - name: Install mdbook-pagetoc
         run: |
+          mkdir mdbook-pagetoc
           curl -sSL https://github.com/slowsage/mdbook-pagetoc/releases/download/v0.2.0/mdbook-pagetoc-v0.2.0-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook-pagetoc
           echo `pwd`/mdbook-pagetoc >> $GITHUB_PATH
       - name: Build Book
