@@ -12,6 +12,9 @@ jobs:
       pages: write
       id-token: write
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Install latest mdbook
         run: |
           tag=$(curl 'https://api.github.com/repos/rust-lang/mdbook/releases/latest' | jq -r '.tag_name')
@@ -19,9 +22,10 @@ jobs:
           mkdir mdbook
           curl -sSL $url | tar -xz --directory=./mdbook
           echo `pwd`/mdbook >> $GITHUB_PATH
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Install mdbook-pagetoc
+        run: |
+          curl -sSL https://github.com/slowsage/mdbook-pagetoc/releases/download/v0.2.0/mdbook-pagetoc-v0.2.0-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook-pagetoc
+          echo `pwd`/mdbook-pagetoc >> $GITHUB_PATH
       - name: Build Book
         run: |
           mdbook build
